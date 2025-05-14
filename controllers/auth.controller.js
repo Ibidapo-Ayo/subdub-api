@@ -9,7 +9,7 @@ export const signUp = async (req, res, next) => {
   session.startTransaction();
 
   try {
-    const { email, password, name } = req.body;
+    const { email, password, name, role } = req.body;
 
     const existingUser = await User.findOne({ email });
 
@@ -28,6 +28,7 @@ export const signUp = async (req, res, next) => {
           name,
           email,
           password: hashPassword,
+          role
         },
       ],
       {
